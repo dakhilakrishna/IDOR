@@ -1,3 +1,6 @@
+As mentioned in the IDOR Exploitation Demo file, we can now see how the GET method simply displays the user-entered information on the URL query string or even in the server logs as stated below:
+
+
 GET method:
 
 from flask import request
@@ -27,3 +30,7 @@ Sec-Fetch-Dest: document
 Accept-Encoding: gzip, deflate
 Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 Connection: close
+
+Since the data sent is part of the URL, it is also saved in the browser history and server logs in plaintext. 
+
+To overcome this vulnerability, one of the proposed patchworks which have proven to be effective to a certain extent is the application of Session Storage. More details about this patch is listed in the "Patchwork" file. 
