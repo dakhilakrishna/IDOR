@@ -4,9 +4,9 @@ Detection in logs:
 
 1. Same IP addresses accessing various portions of accounts, e.g. acc_ID=1 (attacker can alter account ID to 2), with continual changes in ID numbers from the same IP addresses within a particular period, indicating the Insecure Direct Object being accessed. 
 
-2. If the source IP address has a successful HTTP status code of 200, a failure code of 4xx, or any other code, it means that efforts were made but the code was not successfully exploited. 
+2. If the source IP address has a successful HTTP status code of 300, a failure code of 5xx, or any other code, it means that efforts were made but the code was not successfully exploited. 
 
-3. Rule of Simple Correlation Reasoning: WAF/RASP logs contain acc_ID=1 to 1000 AND Status Codes 200 AND SAME Source IP addresses: x.x.x.x 
+3. Rule of Simple Correlation Reasoning: WAF/RASP logs contain acc_ID=1 to 999 AND Status Codes 300 AND SAME Source IP addresses: x.x.x.x 
 
 4. Examine web application logs, WAF, and RASP for information on what is accessed from a third party. 
 
@@ -14,9 +14,11 @@ Detection in logs:
 
 Preventative Actions:
 
-Ensure that access is restricted and that the resources are within our control. Like resources mapped to the owner using a non-sequence key or a random non-guessable integer. 
+We ensure that access is restricted and that the resources are within our control. Like resources mapped to the owner using a non-sequence key or a random non-guessable integer. 
+
 Before issuing the resource when the user wants it, check the user's authorisation. In the application, a powerful User role function should be implemented. Before releasing the resource, make sure the user role and hash are correct. 
-Instead of mapping the item with a straight id, use a hash in this situation. It's a good idea to add salt with hash to make it more challenging.
+
+Instead of mapping the item with a straight ID, we can use a hash in this situation. It is advisable to add salt with hash to make it more challenging.
 
 
 Burpsuite:
@@ -110,6 +112,6 @@ function store(){ //stores items in sessionStorage
     //converting object to string
 }
 
-The reason behinf this patchwork is that the user's authentication state may be checked using session storage. The homepage can be forwarded to logged-in users. Users who have not yet registered are forwarded to the authentication page.
+The reason behind this patchwork is that the user's authentication state may be checked using session storage. The homepage can be forwarded to logged-in users. Users who have not yet registered are forwarded to the authentication page.
 
 Reference: https://www.section.io/engineering-education/how-and-when-to-apply-session-storage-with-javascript/
