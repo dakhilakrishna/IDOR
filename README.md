@@ -54,3 +54,5 @@ String query = "SELECT * FROM accts WHERE account = ?";
 PreparedStatement pstmt = connection.prepareStatement(query, ... );
 pstmt.setString(1, request.getParameter("acct"));
 ResultSet results = pstmt.executeQuery( );
+
+Using BURPSUITE, we capture the requests made from the client-side and make the necessary changes. This is explained in the file "IDOR - Exploitation Demo"
