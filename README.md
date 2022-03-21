@@ -53,4 +53,9 @@ ResultSet results = pstmt.executeQuery( );
 
 In the case of Javascript, which is what we have demonstrated GET method file. 
 
-Using BURPSUITE, we capture the requests made from the client-side and make the necessary changes. This is explained in the file "IDOR - Exploitation Demo"
+INSTRUCTIONS:
+
+1. Instructions on the installation of BurpSuite are listed in "BurpSuite Installation".
+2. Using BURPSUITE, we capture the requests made from the client-side and make the necessary changes. This is explained in the file "IDOR - Exploitation Demo"
+3. The reason behind this vulnerability is explained under "GET method"
+4. The exploitation is patched using certain proposed methods of which one of them is explained under "Patchwork"
