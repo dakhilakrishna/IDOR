@@ -7,7 +7,6 @@ their pages dynamically. It also provides a bi-directional JavaScript bridge API
 to create quick one-off BurpSuite plugin prototypes which can interact directly with the DOM and
 Burp's extender API.
 
----
 
 ## System Requirements
 
@@ -15,7 +14,6 @@ BurpKit has the following system requirements:
 - Oracle JDK &gt;=8u50 and &lt;9 [download](https://www.oracle.com/java/technologies/downloads/)
 - At least 4GB of RAM
 
----
 
 ## Installation
 Installing BurpKit is simple:
