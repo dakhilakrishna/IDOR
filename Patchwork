@@ -1,0 +1,19 @@
+Patchwork for IDOR vulnerability
+
+Detection in logs:
+
+Same IP addresses accessing various portions of accounts, e.g. accId=1 (attacker can alter account id to 2), with continual changes in id numbers from the same IP addresses within a particular period, indicating the Insecure Direct Object being accessed. 
+
+If the source IP address has a successful HTTP status code of 200, a failure code of 4xx, or any other code, it means that efforts were made but the code was not successfully exploited. 
+
+Rule of Simple Correlation Reasoning: WAF/RASP logs contain accId=1 to 1000 AND Status Codes 200 AND SAME Source IP addresses: x.x.x.x 
+
+Examine web application logs, WAF, and RASP for information on what is accessed from a third party. 
+
+Examine the results of the vulnerability scanners and see whether the application has any new vulnerabilities.
+
+Preventative Actions 
+
+Ensure that access is restricted and that the resources are within our control. Like resources mapped to the owner using a non-sequence key or a random non-guessable integer. 
+Before issuing the resource when the user wants it, check the user's authorisation. In the application, a powerful User role function should be implemented. Before releasing the resource, make sure the user role and hash are correct. 
+Instead of mapping the item with a straight id, use a hash in this situation. It's a good idea to add salt with hash to make it more challenging.
