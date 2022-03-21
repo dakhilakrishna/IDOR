@@ -1,29 +1,20 @@
-# IDOR
+# IDOR - Insecure Direct Object Reference. 
 
+The vulnerability that we have chosen is Insecure Direct Object Reference and the demonstration for the same has been done on Portswigger. The initial aim was to create a dummy website with a database linked to it. This had a .html, .css, .js and .json file in it. Unfortunately, that was not possible as we were unable to host the website. So a work-around that we have decided to go ahead with is implementing the vulnerability and exploiting it on Portswigger. We have also proposed a possible patchwork for our vulnerability and details as to why the patch is a failure is explained in the Patchwork file. Sample codes of the website have been extracted, uploaded and our understanding as to what is happening where has been documented. 
 
-IDOR is a flaw in access control that allows unauthorized access to program functionalities by using invalidated user input. IDOR can lead to the leaking of sensitive information, data manipulation, and other issues. They're a form of access control flaw when a program utilizes user-supplied input to get direct access to objects.  
+You will be able to find the source code in the <>code section outside the README file. Before jumping into the technicalities of the topic, let us discuss a little about what IDOR is, how they can be detected and prevented. 
 
-  
+IDOR is a flaw in access control that allows unauthorized access to program functionalities by using invalidated user input. This can lead to leakage of the user's sensitive information. IDOR can be found in URLs, body requests, GET or POST methods and sometimes, in cookies too. 
 
-Examples of IDOR  
-
-There are several examples of access control flaws in which user-controlled parameter values are utilized to access resources or services directly.  
-
-  
+For example, there are several access control flaws in which user-controlled parameter values are utilized to access resources or services directly.  
 
 Consider a website that accesses the customer account page by getting information from the back-end database using the following URL:  
 
- https://insecure-website.com/customer_account?customer_number=132355  
+https://vulnerable-website.com/customer_account?customer_number=12345  
 
-  
-
-In this case, the customer number is directly utilized as a record index in queries run on the back-end database. If no additional safeguards are in place, an attacker can change the customer number value to access other customers' information by circumventing access constraints. This is an example of a horizontal privilege escalation caused by an IDOR vulnerability.  
-
-  
+Here, it is seen that the customer number is directly referenced which means that if an attacker has access to this link, they can easily tamper the information gained. Failure of additional safeguards may lead to the attacker manipulating, deleting or even publishing confidential information.
 
 Understanding IDOR Vulnerability:  
-
-  
 
 Although IDOR is not a direct security issue, it does provide a favorable atmosphere for hackers to gain unauthorized access to data.  
 
@@ -33,17 +24,13 @@ Although IDOR is not a direct security issue, it does provide a favorable atmosp
 
 3. The direct object reference entity is changed, and a new HTTP request is made.  
 
- 4. An HTTP request is made without user authentication, and the hacker gains access to sensitive data.  
-
-  
+4. An HTTP request is made without user authentication, and the hacker gains access to sensitive data.  
 
 IDOR attacks are of two types:  
 
 Manipulation of the body: The value of a checkbox, radio button, or form field can be changed by an attacker. This allows them to quickly obtain information from other users.  
 
 Tampering with the URL: The URL is changed by altering the HTTP request parameters at the client's end. A URL-altering IDOR attack usually targets the HTTP verbs GET and POST.  
-
-  
 
 IDORs at Work  
 
@@ -54,3 +41,16 @@ When the following three requirements are satisfied, an unsafe direct object ref
 2. The user can change the direct reference by manipulating a URL or form parameter.  
 
 3. The program allows access to the internal object without first determining whether or not the user is permitted.
+
+So what exactly is the issue with our code that leads to IDOR vulnerability?
+
+
+If observed closely, it is seen that GET method is used to fetch the user inofmation which sends this data directly to the URL. This is less secure compared to POST because data sent is part of the URL. 
+
+
+When using SQL, the following happens:
+
+String query = "SELECT * FROM accts WHERE account = ?";
+PreparedStatement pstmt = connection.prepareStatement(query, ... );
+pstmt.setString(1, request.getParameter("acct"));
+ResultSet results = pstmt.executeQuery( );
