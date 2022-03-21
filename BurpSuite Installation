@@ -1,4 +1,4 @@
-# BurpKit
+BurpKit
 
 ## Introduction
 Welcome to the next generation of web application penetration testing - using WebKit to own the web.
@@ -8,14 +8,15 @@ to create quick one-off BurpSuite plugin prototypes which can interact directly 
 Burp's extender API.
 
 
-## System Requirements
+System Requirements
 
 BurpKit has the following system requirements:
 - Oracle JDK &gt;=8u50 and &lt;9 [download](https://www.oracle.com/java/technologies/downloads/)
 - At least 4GB of RAM
 
 
-## Installation
+Installation
+
 Installing BurpKit is simple:
 
 1. Download the latest prebuilt release from: (https://github.com/allfro/BurpKit/releases).
