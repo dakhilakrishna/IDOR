@@ -12,7 +12,7 @@ Burp's extender API.
 ## System Requirements
 
 BurpKit has the following system requirements:
-- Oracle JDK &gt;=8u50 and &lt;9 ([Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html))
+- Oracle JDK &gt;=8u50 and &lt;9 https://www.oracle.com/java/technologies/downloads/
 - At least 4GB of RAM
 
 ---
@@ -20,7 +20,7 @@ BurpKit has the following system requirements:
 ## Installation
 Installing BurpKit is simple:
 
-1. Download the latest prebuilt release from the [GitHub releases page](https://github.com/allfro/BurpKit/releases).
+1. Download the latest prebuilt release from: (https://github.com/allfro/BurpKit/releases).
 2. Open BurpSuite and navigate to the `Extender` tab.
 3. Under `Burp Extensions` click the `Add` button.
 4. In the `Load Burp Extension` dialog, make sure that `Extension Type` is set to `Java` and click the `Select file ...` button under `Extension Details`.
