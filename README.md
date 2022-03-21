@@ -32,7 +32,6 @@ Manipulation of the body: The value of a checkbox, radio button, or form field c
 
 Tampering with the URL: The URL is changed by altering the HTTP request parameters at the client's end. A URL-altering IDOR attack usually targets the HTTP verbs GET and POST.  
 
-IDORs at Work  
 
 When the following three requirements are satisfied, an unsafe direct object reference vulnerability occurs:  
 
@@ -45,14 +44,13 @@ When the following three requirements are satisfied, an unsafe direct object ref
 So what exactly is the issue with our code that leads to IDOR vulnerability?
 
 
-If observed closely, it is seen that GET method is used to fetch the user inofmation which sends this data directly to the URL. This is less secure compared to POST because data sent is part of the URL. 
-
-
-When using SQL, the following happens:
+In simple terms, when using SQL, the following happens:
 
 String query = "SELECT * FROM accts WHERE account = ?";
 PreparedStatement pstmt = connection.prepareStatement(query, ... );
 pstmt.setString(1, request.getParameter("acct"));
 ResultSet results = pstmt.executeQuery( );
+
+In the case of Javascript, which is what we have demonstrated GET method file. 
 
 Using BURPSUITE, we capture the requests made from the client-side and make the necessary changes. This is explained in the file "IDOR - Exploitation Demo"
