@@ -1,5 +1,7 @@
 # IDOR - Insecure Direct Object Reference. 
 
+GITHUB Link: https://github.com/dakhilakrishna/IDOR.git
+
 The vulnerability that we have chosen is Insecure Direct Object Reference and the demonstration for the same has been done on Portswigger. The initial aim was to create a dummy website with a database linked to it. This had a .html, .css, .js and .json file in it. Unfortunately, that was not possible as we were unable to host the website. So a work-around that we have decided to go ahead with is implementing the vulnerability and exploiting it on Portswigger. We have also proposed a possible patchwork for our vulnerability and details as to why the patch is a failure is explained in the Patchwork file. Sample codes of the website have been extracted, uploaded and our understanding as to what is happening where has been documented. 
 
 You will be able to find the source code in the <>code section outside the README file. Before jumping into the technicalities of the topic, let us discuss a little about what IDOR is, how they can be detected and prevented. 
