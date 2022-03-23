@@ -64,6 +64,7 @@ This gives us access to the session storage functions we need.
 
 A sample code before incorporating our session storage:
 
+```
 <!DOCTYPE html>
 <html>
 
@@ -111,6 +112,7 @@ function store(){ //stores items in sessionStorage
     window.sessionStorage.setItem('car',JSON.stringify(car));  
     //converting object to string
 }
+```
 
 The reason behind this patchwork is that the user's authentication state may be checked using session storage. The homepage can be forwarded to logged-in users. Users who have not yet registered are forwarded to the authentication page. This patch is not 100% successful and can still be bypassed when the salted hashes are brute-forced. Even though it takes time, it is still possible. Our main takeaway from this is that it certainly makes it harder for the attacker to gain access to potentially confidential information.
 
