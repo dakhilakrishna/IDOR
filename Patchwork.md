@@ -36,12 +36,15 @@ Attackers commonly employ the Burp Suite Tool to carry out such attacks. The mea
 As discussed earlier, we employ the Session Storage method to overcome IDOR to an extent. Session Storage variable stores the user's data for only one session and is deleted as soon as the user exits or closes the browser.
 
 Syntax: sessionStorage
+
 To store data: sessionStorage.setItem("key", "value");
+
 To remove data: sessionStorage.clear();
 
 For example, when the following snippet is incorporated in our code, every time a user information is requested, the server makes sure that the information fetched belongs to the session of the user. Essentially, when an "attacker" tries to barge, the page simply fails to load or the corresponding fallback is executed. 
 
 sessionStorage.setItem("lastname", "2151425");
+
 sessionStorage.getItem("lastname");
 
 Another work-around is REST API. A RESTful API sends a representation of the resource's state to the requester or endpoint when a client request is made. JSON (Javascript Object Notation), HTML, XLT, Python, PHP, or plain text are some of the forms in which this information, or representation, is sent through HTTP.
