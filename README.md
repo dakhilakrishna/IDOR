@@ -48,7 +48,7 @@ So what exactly is the issue with our code that leads to IDOR vulnerability?
 
 In simple terms, when using SQL, the following happens:
 
-'''
+
 String query = "SELECT * FROM accts WHERE account = ?";
 
 PreparedStatement pstmt = connection.prepareStatement(query, ... );
@@ -56,7 +56,7 @@ PreparedStatement pstmt = connection.prepareStatement(query, ... );
 pstmt.setString(1, request.getParameter("acct"));
 
 ResultSet results = pstmt.executeQuery( );
-'''
+
 
 In the case of Javascript, which is what we have demonstrated GET method file. 
 
